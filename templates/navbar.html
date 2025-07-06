@@ -1,0 +1,49 @@
+<!-- inject the navbar: templates/navbar.html -->
+<nav class="navbar navbar-expand-lg border border-2 border-pink">
+    <div class="container-fluid">
+
+        <!-- Logo + Brand -->
+        <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='images/favicon.png') }}" alt="Logo" style="height: 40px;"
+                class="me-2">
+            ICEMAN's FLIGHT WORLD!
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+
+                <!-- Aircraft Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="aircraftDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Aircraft
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="aircraftDropdown">
+                        {% for aircraft in aircraft_list %}
+                        <li>
+                            <a class="dropdown-item" href="{{ url_for('aircraft_detail', slug=aircraft.slug) }}">
+                                {{ aircraft.name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+                <!-- Other Nav Items -->
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('flights') }}">Flights</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+
+                <!-- Cart Icon -->
+                <li class="nav-item d-flex align-items-center">
+                    <a class="nav-link d-flex align-items-center" href="{{ url_for('cart') }}">
+                        <i class="bi bi-cart-fill" style="color: #ff00ff; font-size: 1.25rem;"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

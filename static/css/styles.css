@@ -1,0 +1,295 @@
+/* Import arcade-style font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #0d0d0d;
+    color: #00ffff;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #1a1a2e;
+}
+
+.border-pink {
+    border-color: #ff00ff !important;
+}
+
+.navbar .nav-link {
+    color: #ff00ff !important;
+}
+
+.navbar .nav-link:hover {
+    color: #00ffff !important;
+}
+
+.navbar .nav-link i {
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1;
+    font-size: 1.25rem;
+    position: relative;
+    top: 0;
+}
+
+.navbar .nav-link:hover i {
+    animation: bounce 0.3s ease;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.navbar-brand img {
+    max-height: 40px;
+    vertical-align: middle;
+}
+
+/* Carousel Styling */
+.carousel {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.carousel-inner {
+    width: 100%;
+    height: 100%;
+    max-height: 450px;
+    overflow: hidden;
+    border: 2px solid #ff00ff;
+    border-radius: 15px;
+}
+
+.carousel-item {
+    background-color: #0d0d0d;
+    height: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 100%;
+    }
+}
+
+/* Carousel Text Scaling */
+.carousel-caption {
+    text-align: center;
+}
+
+.carousel-heading {
+    font-size: 2.5vw;
+    font-weight: bold;
+    color: #ff00ff;
+    text-shadow: 2px 2px 6px #000;
+    margin-bottom: 1rem;
+}
+
+.carousel-subheading {
+    font-size: 1.3vw;
+    color: #00ffff;
+    text-shadow: 2px 2px 4px #000;
+}
+
+@media (max-width: 768px) {
+    .carousel-heading {
+        font-size: 6vw;
+    }
+
+    .carousel-subheading {
+        font-size: 4vw;
+    }
+}
+
+/* Carousel Control Buttons */
+.custom-carousel-btn {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(255, 0, 255, 0.3);
+    border-radius: 50%;
+    border: 2px solid #ff00ff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.custom-carousel-btn:hover {
+    background-color: #ff00ff;
+    box-shadow: 0 0 12px #ff00ff;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(180deg) brightness(150%);
+    width: 30px;
+    height: 30px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: auto;
+}
+
+/* Card Styling */
+.card {
+    background-color: #141414;
+    border: 2px solid #ff00ff;
+    color: #00ffff;
+}
+
+.flight-grid .card {
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.flight-grid .card:hover {
+    transform: scale(1.05);
+    background-color: #1f1f3d;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #1a1a2e;
+    color: #00ffff;
+    padding: 1rem 0;
+    min-height: 420px;
+}
+
+.footer-nav a {
+    color: #ff00ff;
+    text-decoration: none;
+    margin: 0 15px;
+    margin-bottom: 0.5rem;
+}
+
+.footer-nav a:hover {
+    color: #00ffff;
+}
+
+.custom-footer-border {
+    border-top: 2px solid #ff00ff !important;
+}
+
+/* Who We Are Section */
+section h2 {
+    margin-top: 3rem;
+}
+
+.who-we-are {
+    background-color: #141414;
+    color: #00ffff;
+    padding: 2rem;
+    border: 2px solid #ff00ff;
+    border-radius: 15px;
+}
+
+/* Force even height for all flight cards */
+.flight-grid .col-md-3 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 25%;
+    flex: 0 0 25%;
+}
+
+.flight-grid .card {
+    height: 100%;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navbar .navbar-brand {
+    color: #ff00ff !important;
+}
+
+.navbar .navbar-brand:hover {
+    color: #00ffff !important;
+}
+
+.navbar .nav-link:hover i.bi-cart-fill {
+    color: #00ffff !important;
+}
+
+.navbar .nav-link i.bi-cart-fill {
+    line-height: 1;
+    font-size: 1.25rem;
+    vertical-align: middle;
+    position: relative;
+    top: -5px;
+    /* Adjust this value to fine-tune alignment */
+}
+
+.pink-border-block {
+    border: 4px solid #ff00ff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.aircraft-type {
+    color: #ff00ff;
+    /* bright cyan */
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-top: 0.25rem;
+}
+
+/* Added to make Flights tagline a little different */
+.text-iceman-pink {
+    color: #ff00ff !important;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 1px 1px #1f1f3d;
+}
+
+/* Cool retro gold/yellow for availabilities*/
+.availability-highlight {
+    color: #ffd700;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 1px 1px #1f1f3d;
+}
+
+/* Cool retro gold/yellow for pirce and total price*/
+.availability-highlight {
+    color: #ffd700;
+    font-family: 'Press Start 2P', cursive;
+    text-shadow: 1px 1px #1f1f3d;
+}
+
+.eagletown-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* eagletown image effect*/
+.eagletown-hover:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #00ffff;
+    cursor: pointer;
+}
+
+/* Pink border around the toggle button */
+.navbar-toggler {
+    border: 2px solid #ff00ff !important;
+}
+
+/* Pink hamburger icon inside the toggle button */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23ff00ff' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}

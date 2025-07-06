@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout | ICEMAN’s FLIGHT WORLD{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">🧾 Checkout</h2>
+
+    <form method="POST" action="{{ url_for('checkout') }}">
+        {{ form.hidden_tag() }}
+
+        <!-- Customer info -->
+        <div class="mb-3">
+            {{ form.customer_name.label(class="form-label") }}
+            {{ form.customer_name(class="form-control", placeholder="Full Name") }}
+            {% if form.customer_name.errors %}
+            <div class="text-danger small">{{ form.customer_name.errors[0] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control", placeholder="Email Address") }}
+            {% if form.email.errors %}
+            <div class="text-danger small">{{ form.email.errors[0] }}</div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.phone_number.label(class="form-label") }}
+            {{ form.phone_number(class="form-control", placeholder="Phone Number") }}
+            {% if form.phone_number.errors %}
+            <div class="text-danger small">{{ form.phone_number.errors[0] }}</div>
+            {% endif %}
+        </div>
+
+        <!-- Per-flight selectors -->
+        {% for flight in flights %}
+        <div class="mb-4 p-3 border rounded shadow-sm">
+            <h5>{{ flight.name }}</h5>
+            <img src="{{ url_for('static', filename='images/' + flight.image) }}" alt="{{ flight.name }}"
+                class="img-fluid mb-2" style="max-height: 150px;">
+
+            <div class="mb-3">
+                {{ form.flights[loop.index0].aircraft_choice.label(class="form-label") }}
+                {{ form.flights[loop.index0].aircraft_choice(class="form-select") }}
+            </div>
+
+            <div class="mb-3">
+                {{ form.flights[loop.index0].time_slot.label(class="form-label") }}
+                {{ form.flights[loop.index0].time_slot(class="form-select") }}
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Total Price -->
+        <h4 class="text-end availability-highlight mt-4">
+            Total: ${{ flights | map(attribute='price') | sum | round(2) }}
+        </h4>
+
+        <div class="mb-3 text-center">
+            {{ form.submit(class="btn btn-success px-4") }}
+        </div>
+    </form>
+</div>
+
+<!-- Order Complete Modal -->
+<div class="modal fade" id="orderCompleteModal" tabindex="-1" aria-labelledby="orderCompleteLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white border border-2 border-info">
+            <div class="modal-header">
+                <h5 class="modal-title" id="orderCompleteLabel">✈️ Order Confirmed, Maverick!</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p><strong>You’re cleared for takeoff.</strong></p>
+                <p>We’ll see you on the flight line, call sign <span style="color:#ff00ff">ICEMAN</span>.</p>
+                <img src="{{ url_for('static', filename='images/iceman.png') }}" alt="Iceman"
+                    class="img-fluid rounded mt-2" style="max-height: 200px;">
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-info" data-bs-dismiss="modal">Cool 😎</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% with messages = get_flashed_messages(category_filter=["success"]) %}
+{% if messages %}
+<script>
+    window.addEventListener('load', () => {
+        const modal = new bootstrap.Modal(document.getElementById('orderCompleteModal'));
+        modal.show();
+    });
+</script>
+{% endif %}
+{% endwith %}
+{% endblock %}

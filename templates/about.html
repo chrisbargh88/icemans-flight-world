@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}About | ICEMAN’s FLIGHT WORLD{% endblock %}
+
+<!-- About Text -->
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow p-4">
+    <h2 class="mb-3">About ICEMAN’s FLIGHT WORLD</h2>
+    <p>Welcome to <strong>ICEMAN’s FLIGHT WORLD</strong> – where the mullets are optional but the aviators are
+      mandatory.
+      Nestled in the scenic skies above the definitely FAA-certified <strong>Ray’s Airfield</strong> in Berry NSW, we
+      offer
+      high-octane flight experiences for the dangerously curious.</p>
+
+    <p>Whether you're chasing the Gs in a Super Tucano, flying low and slow in a Decathlon, or pulling Top Gun moves
+      in a Mirage F1, we’ve got the wings to match your wildest Maverick dreams.</p>
+
+    <p>Our flight training school isn't just about becoming a pilot – it’s about becoming a legend. Think of it as
+      aviation with a side of adrenaline and a soundtrack that slaps. We offer themed flight packages like
+      <em>“Roll & Rumble”</em>, <em>“Sky Patrol”</em>, and the ever-popular <em>“Teach the Sky Instructor Flight
+        ”</em> (aerobatic
+      training for those with strong stomachs and weak self-preservation instincts).
+    </p>
+
+    <p>Whether you’re a newbie or a near-ace, we have the aircraft and the attitude to make your day unforgettable.
+      So suit up, grab your callsign, and prepare to buzz the tower. Because at <strong>ICEMAN’s FLIGHT WORLD</strong>,
+      your altitude is only limited by your attitude.</p>
+
+    <!-- mavgoose Image -->
+    <div class="text-center my-4">
+      <img src="{{ url_for('static', filename='images/mavgoose.png') }}" alt="Maverick and Goose"
+        class="img-fluid rounded shadow" style="max-width: 100%; height: auto;">
+    </div>
+
+    <hr>
+    <p><strong>Phone:</strong> 1800 100 111<br>
+      <strong>Email:</strong> <a href="mailto:contact@iceman.com">contact@iceman.com</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

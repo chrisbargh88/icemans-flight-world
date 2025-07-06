@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Carousel -->
+<div class="carousel-wrapper mt-4 rounded-4 shadow">
+  <div class="carousel slide" data-bs-ride="carousel" id="mainCarousel">
+    <div class="carousel-inner ratio" style="--bs-aspect-ratio: 66.67%;">
+
+      <div class="carousel-item active">
+        <img alt="Flight Experience 1" class="d-block w-100"
+          src="{{ url_for('static', filename='images/carousel001.png') }}" />
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="carousel-heading">Feel the Need for Speed</h2>
+          <p class="carousel-subheading">Top Gun dreams made real.</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img alt="Flight Experience 2" class="d-block w-100"
+          src="{{ url_for('static', filename='images/carousel002.png') }}" />
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="carousel-heading">Fly Like a Maverick</h2>
+          <p class="carousel-subheading">Jet-fueled fun over Berry.</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img alt="Flight Experience 3" class="d-block w-100"
+          src="{{ url_for('static', filename='images/carousel003.png') }}" />
+        <div class="carousel-caption d-none d-md-block">
+          <h2 class="carousel-heading">Rule the Skies</h2>
+          <p class="carousel-subheading">Your jet-fighter fantasy awaits.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="carousel-control-prev custom-carousel-btn" type="button" data-bs-target="#mainCarousel"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next custom-carousel-btn" type="button" data-bs-target="#mainCarousel"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</div>
+
+<!-- Who We Are Section -->
+<section class="who-we-are container my-5">
+  <h2 class="text-center mb-4">⚡ Who the Hell Are We?</h2>
+
+  <div class="text-center mb-4">
+    <img src="{{ url_for('static', filename='images/iceman.png') }}" alt="ICEMAN" class="img-fluid rounded shadow"
+      style="max-width: 50%; height: auto; border: 3px solid #ff00ff;">
+  </div>
+
+  <div class="pink-border-block">
+    <p class="lead text-center">
+      Welcome to ICEMAN’s FLIGHT WORLD – where the mullets are optional but the aviators are mandatory...
+    </p>
+    <p class="text-center">
+      Whether you're chasing the Gs in a Super Tucano or pulling Top Gun moves in a Mirage F1...
+    </p>
+    <p class="text-center">
+      Our flight school isn't just about becoming a pilot – it's about becoming a legend.
+    </p>
+    <p class="text-center">
+      So suit up, grab your callsign, and prepare to buzz the tower. Because at
+      <strong>ICEMAN’s FLIGHT WORLD</strong>, your altitude is only limited by your attitude.
+    </p>
+  </div>
+</section>
+
+<!-- Flight Type Grid -->
+<section class="container mt-5">
+  <h2 class="text-center mb-4">Choose Your Flight Experience</h2>
+  <div class="row flight-grid">
+    {% for flight in flights %}
+    <div class="col-md-3 mb-4">
+      <a href="{{ url_for('flight_detail', slug=flight.slug) }}" class="text-decoration-none text-dark">
+        <div class="card p-3 text-center">
+          <h6>{{ flight.name }}</h6>
+          <p>{{ flight.tagline }}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Eagle Town Image Banner -->
+<section class="container text-center my-5">
+  <a href="https://www.youtube.com/watch?v=siwpn14IE7E" target="_blank" class="eagletown-link">
+    <img src="{{ url_for('static', filename='images/eagletown.png') }}" alt="Eagle Town"
+      class="img-fluid rounded shadow eagletown-hover"
+      style="max-width: 100%; height: auto; border: 3px solid #ff00ff;">
+  </a>
+</section>
+
+{% endblock %}

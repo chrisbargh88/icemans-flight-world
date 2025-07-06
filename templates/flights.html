@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}All Flights | ICEMAN’s FLIGHT WORLD{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Flight Experiences</h1>
+
+  <!-- Sort Dropdown -->
+  <form method="GET" action="{{ url_for('flights') }}" class="mb-4 text-end">
+    <label for="sort_by" class="me-2">Sort By:</label>
+    <select name="sort_by" id="sort_by" class="form-select d-inline-block w-auto">
+      <option value="name" {% if request.args.get('sort_by')=='name' %}selected{% endif %}>Name (A–Z)</option>
+      <option value="price_asc" {% if request.args.get('sort_by')=='price_asc' %}selected{% endif %}>Price (Low to High)
+      </option>
+      <option value="price_desc" {% if request.args.get('sort_by')=='price_desc' %}selected{% endif %}>Price (High to
+        Low)</option>
+    </select>
+    <button type="submit" class="btn btn-outline-info ms-2">Apply</button>
+  </form>
+
+  <!-- Flight cards grid -->
+  <div class="row g-4">
+    {% for flight in flights %}
+    <div class="col-md-12">
+      <!-- Horizontal card with image and info -->
+      <div class="card flex-md-row p-3">
+        <!-- Flight image -->
+        <img src="{{ url_for('static', filename='images/' + flight.image) }}" class="img-fluid rounded-start me-3"
+          style="max-width: 200px;" alt="{{ flight.name }}">
+
+        <!-- Flight info -->
+        <div class="card-body">
+          <h5 class="card-title">{{ flight.name }}</h5>
+          <p class="card-text">{{ flight.tagline }}</p>
+          <p><strong>Price:</strong> ${{ "%.2f"|format(flight.price) }}</p>
+          <a href="{{ url_for('flight_detail', slug=flight.slug) }}" class="btn btn-outline-info">View Details</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
